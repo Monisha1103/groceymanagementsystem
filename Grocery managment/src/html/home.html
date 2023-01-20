@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get me Groceries</title>
+    <link rel="stylesheet" href="..\css\home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+</head>
+
+<body>
+    <nav class="nav-header">
+        <div class="nav-logo">
+            <lord-icon src="https://cdn.lordicon.com/qwzdhaoa.json" trigger="loop" delay="2000" style="width:50px;height:46px; margin: 0px; "></lord-icon>
+        </div>
+        <div class="nav-searchBar">
+            <input type="text" placeholder="Get your daily need here..." style="padding-left: 10px;">
+        </div>
+        <div class="nav-options">
+            <ul>
+                <li id="home"><a href="..\html\home.html">Home</a></li>
+                <li id="myCart"><a href="..\html\myCart.html">My Cart</a></li>
+                <li id="myAcc"><a href="..\html\myAccount.html">My Account</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="sellerInfo">
+        <span style="background-color: black; border-radius: 50%; color: white; width: 7px; padding-left: 4px">&#8505;</span>
+        <span>&nbsp;&nbsp;You are logged in as Seller. Hover the products to see the View and Edit Item details Options!</span>
+    </div>
+    <div id="offers-section">
+
+    </div>
+    <div id="filterContainer" style="margin-top: 40px;">
+        <div id="filterOptions">
+            <span class="filterOption" id="all" onclick="filterGroceries(this.id)">All</span>
+            <span class="filterOption" id="vegetable" onclick="filterGroceries(this.id)">Vegetables</span>
+            <span class="filterOption" id="fruit" onclick="filterGroceries(this.id)">Fruits</span>
+            <span class="filterOption" id="dairy" onclick="filterGroceries(this.id)">Dairy</span>
+            <span class="filterOption" id="snacks" onclick="filterGroceries(this.id)">Snacks</span>
+            <span class="filterOption" id="meat" onclick="filterGroceries(this.id)">Meat</span>
+            <span class="filterOption" id="personal" onclick="filterGroceries(this.id)">Grocery</span>
+        </div>
+    </div>
+    <div class="groceries-container">   
+        <div id="container">
+        </div>
+    </div>
+    <nav class="nav-footer" style="display: none;">
+        <div class="nav-logo">
+            Footer content
+        </div>
+        <div class="nav-options">
+            <ul>
+                <li><a href="#">Buy Now</a></li>
+                <li><a href="#">Save for Later</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script src="..\script\home.js"></script>
+    <script src="..\script\Util.js"></script>
+    <script src="..\script\sessionStorage.js"></script>
+    <script src="..\script\myCart.js"></script>
+</body>
+
+</html>

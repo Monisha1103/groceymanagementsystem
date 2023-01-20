@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+        <center>
+            <div id="mainLoginContainer">
+                <lord-icon src="https://cdn.lordicon.com/itmsnfur.json" trigger="loop" style="width:160px;height:160px">
+            </lord-icon>
+                <h1 style="font-size: 2.5em; margin-top: 0px;">Welcome Back!</h1>
+                <p style="background-color: #2d2d2d; width: 35%; height: 20px; border-radius: 5px; color: white;">Login as Customer / Admin</p>
+                <div id="loginContainer">
+                    <div id="loginOptions">
+                        <label for="seller">Login as Seller</label>
+                        <input type="radio" name="option" value="seller" onclick="changeOption(this)" checked>
+                        <label for="customer">Login as Customer</label>
+                        <input type="radio" name="option" value="customer" onclick="changeOption(this)">
+                    </div>
+                    <div id="loginCases">
+                            <input type="text" id="email" placeholder="Enter the seller email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid email address">
+                            <span id="emailError"></span>
+                            <input type="password" id="password" placeholder="Enter the password">
+                            <span id="passwordError"></span>
+                            <button id="formSubmit" style="margin-bottom: 20px;" onclick="loginForm()">Login</button>
+                    </div>
+                    <div id="signUpCases">
+                        <span>Don't have account? <span id="signUpUser" onclick="handleSigingCases()">Sign up!</span></span>
+                        <span id="forgotPass" onclick="handleSigingCases()">Forgot password?</span>
+                    </div>
+                </div>
+            </div>
+        </center>
+</body>
+
+</html>
+<script>
+    let loginType = "seller";
+    function changeOption(args) {
+        let email = document.getElementById("email");
+        loginType = args.value;
+        email.placeholder = loginType === "seller" ? "Enter the seller email" : "Enter the customer email"
+    }
+
+    function loginForm(){
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let formSubmit = document.getElementById("formSubmit");
+        let emailError = document.getElementById("emailError");
+        let passwordError = document.getElementById("passwordError");
+
+        if(!email.value && !password.value){ 
+            emailError.innerHTML = passwordError.innerHTML = "This field is required";
+        } else if(!email.value){ 
+            emailError.innerHTML = passwordError.innerHTML = "";
+            emailError.innerHTML = "This field is required"; 
+        } else if(!password.value) { 
+            emailError.innerHTML = passwordError.innerHTML = "";
+            passwordError.innerHTML = "This field is required"; 
+        } else {
+            emailError.innerHTML = passwordError.innerHTML = "";
+            let spinner = document.createElement("li");
+            spinner.setAttribute("class", "fa fa-spinner fa-spin");
+            spinner.setAttribute("style", "font-size: 24px;");
+            formSubmit.innerHTML = "Logging in...&nbsp;&nbsp;&nbsp;"
+            formSubmit.appendChild(spinner);
+            setTimeout(function(){
+                if(loginType === "seller"){
+                    window.location.href = "../html/home.html?type=seller";
+                } else {
+                    window.location.href = "../html/home.html";
+                }
+            }, 3000);
+        }
+    }
+
+    function handleSigingCases(){
+
+    }
+</script>
+<style>
+    body {
+        font-family: Helvetica;
+        background-image: url("https://media.istockphoto.com/id/1334821380/photo/black-friday-background-black-shopping-cart-paper-bag.jpg?s=612x612&w=0&k=20&c=UYOeABDTDeNdOn47iK4QuRLtQ7vS8nm6yVt-obJ4q2s=");
+        background-color: #2d2d2d;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+    }
+
+    #mainLoginContainer {
+        margin-top: 50px;
+        padding: 10px;
+        border: 1px solid;
+        border-radius: 5px;
+        width: 45%;
+        box-shadow: 8px 8px 8px -2px rgba(0, 0, 0, 0.75);
+        background-color: #ffcd01;
+    }
+
+    #customerOption,
+    #adminOption {
+        padding: 5px;
+    }
+
+    #customerOption:hover,
+    #adminOption:hover {
+        background-color: rgb(255, 245, 129);
+        cursor: pointer;
+    }
+
+    #loginContainer {
+        width: 62%;
+        margin-top: 24px;
+    }
+
+    #loginCases{
+        margin-top: 30px;
+    }
+
+    input, #formSubmit {
+        outline: none;
+        border-radius: 5px;
+        margin: 10px;
+        border: 1px solid;
+        padding-left: 10px;
+    }
+
+    #loginOptions input{
+        height: 14px;
+        width: 5%;
+    }
+    #loginCases input, #formSubmit{
+        height: 36px;
+        width: 87%;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+        box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    #formSubmit {
+        font-weight: 600;
+        margin-bottom: 70px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    #formSubmit:hover {
+        cursor: pointer;
+        background-color: #f24c00;
+        color: white;
+        border: 1px solid;
+        outline: none;
+        box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    #emailError, #passwordError{
+        font-size: 11px;
+        font-weight: 600;
+        float: left;
+        padding-left: 28px;
+        color: #f24c00;
+    }
+
+    label{
+        background-color: #2d2d2d; width: 35%; height: 20px; border-radius: 5px; color: white; padding: 3px 10px;
+    }
+
+    #signUpCases{
+        font-size: 11px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;    
+        justify-content: space-between;
+        padding: 0px 27px 0px 28px;
+        margin-bottom: 50px;
+    }
+
+    #signUpUser{
+        color: #000e9a;
+    }
+    #signUpUser:hover, #forgotPass:hover{
+        cursor: pointer;
+        color: #f24c00;
+    }
+</style>
